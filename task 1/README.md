@@ -1,5 +1,5 @@
-##TASK-1
-##Terraform AWS EC2 Instance Configuration
+#TASK-1
+#Terraform AWS EC2 Instance Configuration
 
 This file provides a setup for creating an EC2 instance on AWS using Terraform. It uses variable values for flexibility, but you can also choose to hardcode these values instead.
 

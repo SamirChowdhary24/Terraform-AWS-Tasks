@@ -1,6 +1,6 @@
 ami_id = "ami-04f7a54071e74f488"
 instance_type = "t2.micro"
-cidr_block = "10.0.1.0/24"
+cidr_block = "10.0.3.0/24"
 
 
 # environment = "dev"

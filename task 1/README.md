@@ -44,11 +44,12 @@ aws configure
 ```
 ## The Access Key is obtained by following the steps mentioned below: 
 
-1. Sign in to the AWS Management Console
-2. Click on your username in the top right corner of the console, and then select "My Security Credentials".
-3. Scroll down and click on "Create New Access Key" to generate a new pair of access keys.
-4. You can then either "Show Access Key" to view the keys on screen or "Download Key File" to save them as a .csv file.
-5. The secret access key is only shown once, so be sure to secure the .csv file or copy the keys before closing the window.
+1. Log in to the **AWS Management Console**.
+2. Click your **username (top right corner)**, then choose **"My Security Credentials."**
+3. Scroll down and select **"Create New Access Key"** to generate a new access key pair.
+4. Choose either **"Show Access Key"** to view the keys on-screen or **"Download Key File"** to save them as a `.csv` file.
+5. The secret access key is displayed only once, so ensure you securely save the `.csv` file or copy the keys before closing.
+
    
 ---
 

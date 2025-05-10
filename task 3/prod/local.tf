@@ -1,5 +1,5 @@
 
 locals {
-  env = "prod2" 
-  app = "tftask2" 
+  env = "prod69" 
+  app = "tftask69" 
 }

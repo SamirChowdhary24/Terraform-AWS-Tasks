@@ -75,17 +75,22 @@ Task2/
 terraform init
 ```
 
-### 2. Preview the changes
+### 2. Validate the configuration
+```bash
+terraform validate
+```
+
+### 3. Preview the changes
 ```bash
 terraform plan
 ```
 
-### 3.Apply the changes
+### 4.Apply the changes
 ```bash
 terraform apply -auto-approve
 ```
 
-### 4. If you wish to destroy (delete) the resouces created you can run the following command:
+### 5. Destroy resources (optional)
 ```bash
 terraform destroy -auto-approve
 ```

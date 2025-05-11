@@ -60,10 +60,10 @@ aws configure
 
 | File              | Purpose                                                                 |
 |-------------------|-------------------------------------------------------------------------|
-| `provider.tf`     | Defines AWS provider and credentials (hardcoded access + secret key)|
-| `main.tf`         | Contains the EC2 instance resource block with all configurable fields   |
+| `provider.tf`     | Specifies the AWS provider and credentials (access key and secret key are hardcoded).|
+| `main.tf`         | Includes the EC2 instance resource block with all configurable parameters.   |
 | `variables.tf`    | Declares all input variables used in `main.tf`                          |
-| `terraform.tfvars`| Provides actual values for declared variables                           |
+| `terraform.tfvars`| Assigns values to the declared variables.                           |
 
 ```
 ---
@@ -74,17 +74,22 @@ aws configure
 terraform init
 ```
 
-### 2. Preview the changes
+### 2. Validate the configuration
+```bash
+terraform validate
+```
+
+### 3. Preview the changes
 ```bash
 terraform plan
 ```
 
-### 3.Apply the changes
+### 4.Apply the changes
 ```bash
 terraform apply -auto-approve
 ```
 
-### 4. If you wish to destroy (delete) the resouces created you can run the following command:
+### 5. Destroy resources (optional)
 ```bash
 terraform destroy -auto-approve
 ```

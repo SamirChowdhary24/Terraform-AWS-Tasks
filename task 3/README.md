@@ -28,10 +28,22 @@ task 3/
 | |---- local.tf
 |
 |----------- prod/ # Production environment
-| |---- (same structure as dev/)
+| |---- main.tf 
+| |---- variables.tf 
+| |---- terraform.tfvars 
+| |---- backend.tf 
+| |---- provider.tf 
+| |---- output.tf
+| |---- local.tf
 |
 |----------- test/ # Testing environment
-| |----(same structure as dev/)
+| |---- main.tf 
+| |---- variables.tf 
+| |---- terraform.tfvars 
+| |---- backend.tf 
+| |---- provider.tf 
+| |---- output.tf
+| |---- local.tf
 ```
 # Module Structure
 Here is the structure used for each module (ec2, eip, nat, etc.) within the "module" directory:

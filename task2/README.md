@@ -94,3 +94,4 @@ terraform apply -auto-approve
 ```bash
 terraform destroy -auto-approve
 ```
+![image](https://github.com/user-attachments/assets/a60ad9d3-1e83-48c9-af6b-3a0c9fb358bb)

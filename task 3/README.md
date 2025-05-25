@@ -5,6 +5,9 @@ This project showcases a modular method for provisioning AWS infrastructure with
 
 ---
 
+![WhatsApp Image 2025-05-11 at 01 58 16_3fc00235](https://github.com/user-attachments/assets/05a7c2ab-47cf-4ac6-bf74-b90553fd0a81)
+
+
 # Root Structure
 ```bash
 task 3/

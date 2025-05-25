@@ -5,7 +5,7 @@ This project showcases a modular method for provisioning AWS infrastructure with
 
 ---
 
-![WhatsApp Image 2025-05-11 at 01 58 16_3fc00235](https://github.com/user-attachments/assets/05a7c2ab-47cf-4ac6-bf74-b90553fd0a81)
+
 
 
 # Root Structure
@@ -82,3 +82,4 @@ Defines and exposes key output values from the deployment (e.g., VPC ID, Subnet 
 ## 7) `local.tf`
 It holds locally scoped values (such as environment name and app name) utilized to minimize duplication and build dynamic resource names and tags.
 
+![WhatsApp Image 2025-05-11 at 01 58 16_3fc00235](https://github.com/user-attachments/assets/05a7c2ab-47cf-4ac6-bf74-b90553fd0a81)

@@ -63,7 +63,7 @@ task-1/
 ├── variables.tf         # Input variable definitions
 ├── terraform.tfvars     # Variable values for the current environment
 ├── outputs.tf           # (Optional) Output values like instance public IP
-
+```
 ---
 ## Step 4: Terraform Commands to execute the operation
 

@@ -58,30 +58,11 @@ modules/
     ├── variables.tf         # Input variable declarations
     └── output.tf            # Output values
 ```
-# File Structure
+#  Environment-Specific Files
 
-The `dev` environment (and also `prod` and `test`) includes the following seven mandatory Terraform configuration files:
+Each environment directory (`dev`, `prod`, `test`) contains its own set of Terraform configuration files tailored to that environment.
 
-## 1) `main.tf`
-Defines the actual infrastructure by invoking reusable modules (like VPC, Subnet, EC2, etc.). This file serves as the blueprint for creating resources and establishing their relationships.
-
-## 2) `variables.tf`
-Specifies all input variables utilized across the environment's configuration, providing flexibility and enabling parameterization.
-
-## 3) `terraform.tfvars`
-ChatGPT said:
-Provides specific values for the variables defined in variables.tf. Each environment (dev, prod, test) has its own set of values tailored to its requirements.
-
-## 4) `backend.tf`
-Specifies the remote backend configuration (such as S3 for state storage), allowing for consistent, shared, and secure management of the Terraform state.
-
-## 5) `provider.tf`
-Sets up the cloud provider (in this case, AWS), specifying details like the provider name, region, and required version to ensure consistent deployments.
-
-## 6) `output.tf`
-Defines and exposes key output values from the deployment (e.g., VPC ID, Subnet ID), which can be used by other configurations or for logging and reference purposes.
-
-## 7) `local.tf`
-It holds locally scoped values (such as environment name and app name) utilized to minimize duplication and build dynamic resource names and tags.
+### - `{env_name}.tfvars`
+Defines concrete values for the variables declared in `variables.tf`. These values are environment-specific, ensuring that each setup (development, production, testing) behaves according to its intended purpose.
 
 ![WhatsApp Image 2025-05-11 at 01 58 16_3fc00235](https://github.com/user-attachments/assets/05a7c2ab-47cf-4ac6-bf74-b90553fd0a81)

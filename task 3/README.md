@@ -10,44 +10,45 @@ This project showcases a modular method for provisioning AWS infrastructure with
 
 # Root Structure
 ```bash
-task 3/
-|
-|----------- modules/ # Reusable Terraform modules
-| |---- ec2/ 
-| |---- eip/ 
-| |---- nat/ 
-| |---- s3/ 
-| |---- sg/ 
-| |---- subnet/ 
-| |---- vpc/ 
-| |---- igw/
-|----------- dev/ # Development environment configuration
-| |---- main.tf 
-| |---- variables.tf 
-| |---- terraform.tfvars 
-| |---- backend.tf 
-| |---- provider.tf 
-| |---- output.tf
-| |---- local.tf
-|
-|----------- prod/ # Production environment
-| |---- main.tf 
-| |---- variables.tf 
-| |---- terraform.tfvars 
-| |---- backend.tf 
-| |---- provider.tf 
-| |---- output.tf
-| |---- local.tf
-|
-|----------- test/ # Testing environment
-| |---- main.tf 
-| |---- variables.tf 
-| |---- terraform.tfvars 
-| |---- backend.tf 
-| |---- provider.tf 
-| |---- output.tf
-| |---- local.tf
-```
+task-3/
+├── modules/                     # Reusable Terraform modules
+│   ├── ec2/
+│   ├── eip/
+│   ├── igw/
+│   ├── nat/
+│   ├── s3/
+│   ├── sg/
+│   ├── subnet/
+│   └── vpc/
+│
+├── dev/                         # Development environment configuration
+│   ├── backend.tf
+│   ├── local.tf
+│   ├── main.tf
+│   ├── output.tf
+│   ├── provider.tf
+│   ├── terraform.tfvars
+│   └── variables.tf
+│
+├── prod/                        # Production environment configuration
+│   ├── backend.tf
+│   ├── local.tf
+│   ├── main.tf
+│   ├── output.tf
+│   ├── provider.tf
+│   ├── terraform.tfvars
+│   └── variables.tf
+│
+└── test/                        # Testing environment configuration
+    ├── backend.tf
+    ├── local.tf
+    ├── main.tf
+    ├── output.tf
+    ├── provider.tf
+    ├── terraform.tfvars
+    └── variables.tf
+
+
 # Module Structure
 Here is the structure used for each module (ec2, eip, nat, etc.) within the "module" directory:
 ```bash

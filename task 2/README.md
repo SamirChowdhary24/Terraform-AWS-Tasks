@@ -31,6 +31,13 @@ Task2/
 ```
 
 ## Step 1: Setting Up the Child Modules
+###  VPC Module
+
+- **`main.tf`** – Creates a VPC using the provided CIDR block and name
+- **`variables.tf`** – Declares input variables like `cidr_block`, `name` etc.
+- **`outputs.tf`** – Outputs the created VPC's ID
+
+
 ###  EC2 Module
 
 - **`main.tf`** – Launches an EC2 instance with the given config.  
@@ -38,33 +45,21 @@ Task2/
 - **`outputs.tf`** – Outputs the EC2 instance ID.
 
 
-###  VPC Module
-
-
-| File                 | Purpose                                                                 |
-|----------------------|-------------------------------------------------------------------------|
-| `main.tf`            | Creates a VPC using the provided CIDR block and name                    |
-| `variables.tf`       | Declares input variables like `cidr_block`, `name` etc.                 |
-| `outputs.tf`         | Outputs the created VPC's ID                                            |
-
 ###  Subnet Module
 
-| File                 | Purpose                                                                           |
-|----------------------|-----------------------------------------------------------------------------------|
-| `main.tf`            | Creates a subnet in the specified VPC with the given CIDR and AZ                  |
-| `variables.tf`       | Declares input variables like `vpc_id`, `cidr_block` etc.                         |
-| `outputs.tf`         | Outputs the created Subnet ID                                                     |
--------------------------------------------------------------------------------------------------------------
+- **`main.tf`** – Creates a subnet in the specified VPC with the given CIDR and AZ  
+- **`variables.tf`** – Declares input variables like `vpc_id`, `cidr_block` etc.  
+- **`outputs.tf`** – Outputs the created Subnet ID
+
 ## Step 2: Setting Up the Root Module
 ###  Root Module
 
-| File               | Purpose                                                                 |
-|--------------------|-------------------------------------------------------------------------|
-| `main.tf`          | Calls child modules (VPC, Subnet, EC2) and passes variables             |
-| `variables.tf`     | Declares input variables (region, VPC/Subnet/EC2 configs)               |
-| `terraform.tfvars` | Assigns actual values to the declared variables                         |
-| `outputs.tf`       | Outputs VPC ID, Subnet ID, EC2 instance ID, and public IP               |
------------------------------------------------------------------------------------------------------------
+- **`main.tf`** – Calls child modules (VPC, Subnet, EC2) and passes variables  
+- **`variables.tf`** – Declares input variables (region, VPC/Subnet/EC2 configs)  
+- **`terraform.tfvars`** – Assigns actual values to the declared variables
+- **`outputs.tf`** – Outputs VPC ID, Subnet ID, EC2 instance ID, and public IP
+
+
 ## Step 3: Executing the Configurations 
 
 

@@ -72,6 +72,17 @@ The Structure looks like:
 - Allows seamless **modification of individual components** like ALB or RDS without affecting the whole setup
 
 
+## Summary
+
+This Terraform project offers a robust, modular, and secure foundation for deploying a multi-tier application on AWS. It automates the provisioning of essential infrastructure components, including:
+
+- Networking
+- Security
+- Compute resources
+- Load balancing
+- Database services
+
+By adhering to the provided structure and best practices, this setup ensures that your application environment is easy to manage, scalable, and secure.
 
 # Follow these steps to deploy the infrastructure:
 

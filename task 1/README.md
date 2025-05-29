@@ -57,15 +57,13 @@ aws configure
 
  Your file structure should look like this
 ```bash
+task-1/
+├── main.tf              # EC2 instance configuration
+├── provider.tf          # AWS provider setup with credentials
+├── variables.tf         # Input variable definitions
+├── terraform.tfvars     # Variable values for the current environment
+├── outputs.tf           # (Optional) Output values like instance public IP
 
-| File              | Purpose                                                                 |
-|-------------------|-------------------------------------------------------------------------|
-| `provider.tf`     | Specifies the AWS provider and credentials (access key and secret key are hardcoded).|
-| `main.tf`         | Includes the EC2 instance resource block with all configurable parameters.   |
-| `variables.tf`    | Declares all input variables used in `main.tf`                          |
-| `terraform.tfvars`| Assigns values to the declared variables.                           |
-
-```
 ---
 ## Step 4: Terraform Commands to execute the operation
 

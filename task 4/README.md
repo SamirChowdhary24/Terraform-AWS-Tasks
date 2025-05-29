@@ -1,5 +1,19 @@
 # TASK-4  
 # Multi-Region AWS Infrastructure with Terraform
+## Project Objective
+
+This project aims to provision a secure, scalable, and highly available web application infrastructure on AWS. The architecture includes:
+
+- A **Virtual Private Cloud (VPC)** to enable network isolation.
+- **Public and private subnets** distributed across multiple Availability Zones (AZs) for resilience.
+- **Internet Gateway** and **NAT Gateways** to manage inbound and outbound internet traffic securely.
+- **Security Groups** to control communication between application tiers.
+- **Launch Templates** and **Auto Scaling Groups (ASGs)** to manage dynamic scaling of frontend and backend servers.
+- **Application Load Balancers (ALBs)** for intelligent traffic distribution.
+- An **RDS database** deployed in private subnets to enhance data security.
+
+This setup provides a robust foundation for running production-grade web applications with a strong emphasis on availability, security, and performance.
+
 
 ##  Resources to be Created in This Task
 

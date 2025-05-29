@@ -65,4 +65,7 @@ Each environment directory (`dev`, `prod`, `test`) contains its own set of Terra
 ### - `{env_name}.tfvars`
 Defines concrete values for the variables declared in `variables.tf`. These values are environment-specific, ensuring that each setup (development, production, testing) behaves according to its intended purpose.
 
+
+
+
 ![WhatsApp Image 2025-05-11 at 01 58 16_3fc00235](https://github.com/user-attachments/assets/05a7c2ab-47cf-4ac6-bf74-b90553fd0a81)

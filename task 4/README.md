@@ -19,35 +19,35 @@ This setup provides a robust foundation for running production-grade web applica
 
 ### Infrastructure
 - **Region**: 1 AWS Region  
-- **AZs**: 2 for high availability  
-- **VPC**: Custom VPC with isolated tiers  
+- **Availability Zones**: 2 (for high availability)  
+- **VPC**: Custom Virtual Private Cloud with isolated tiers  
 
 ### Subnets
-- **Web Tier**: Public subnets (1 per AZ)  
-- **App Tier**: Private subnets (1 per AZ)  
-- **DB Tier**: Private subnets (1 per AZ)  
+- **Web Tier**: 1 public subnet per AZ  
+- **App Tier**: 1 private subnet per AZ  
+- **DB Tier**: 1 private subnet per AZ  
 
 ### Networking
-- Internet Gateway (IGW)  
+- Internet Gateway (IGW) attached to VPC  
 - NAT Gateway in each public subnet  
-- Route Tables with:
-  - IGW for public subnets  
-  - NAT for private subnets  
+- Route Tables:
+  - Public subnets route through IGW  
+  - Private subnets route through NAT  
 
 ### Compute & Scaling
-- Launch Templates for EC2  
+- Launch Templates for EC2 configurations  
 - Auto Scaling Groups for:
-  - Frontend (Web Tier)  
-  - Backend (App Tier)  
+  - Web Tier (frontend instances)  
+  - App Tier (backend instances)  
 
-### Load Balancer
-- Public ALB (Web Tier)  
-- Private ALB (App Tier)  
-- HTTP/HTTPS listeners + target groups  
+### Load Balancing
+- Public Application Load Balancer for Web Tier  
+- Private ALB for App Tier  
+- HTTP/HTTPS listeners with routing rules and target groups  
 
 ### EC2 Configuration
-- AMI, instance types, SSH key  
-- Network placement by tier
+- Custom AMI, instance types, SSH key pair  
+- Tier-based network placement (Web, App, DB)
 
 
 
@@ -71,100 +71,66 @@ The Structure looks like:
 ├── terraform.tfvars                 # Environment-specific input variables           
 ├── variables.tf                     # Variable declarations
 ```
-## Module Descriptions
+##  Modular Architecture Overview
+
+This project follows a modular Terraform design for clean, reusable, and maintainable infrastructure code. Below is a breakdown of each module’s responsibility:
+
+---
 
 ### 🔹 VPC Module
-- Provisions a VPC with a specified CIDR block.
-- Creates:
-  - Public subnets for the frontend.
-  - Private subnets for backend and database layers across Availability Zones.
-- Outputs:
-  - VPC ID
-  - Subnet IDs
+- Provisions a custom VPC with a specified CIDR block.
+- Creates public subnets (Web) and private subnets (App, DB) across Availability Zones.
+- **Outputs**: VPC ID, Subnet IDs.
 
 ---
 
 ### 🔹 Networking Module
-- Attaches an Internet Gateway to the VPC.
-- Allocates Elastic IPs and deploys NAT Gateways in public subnets.
-- Configures and associates route tables for public and private subnets.
-- Outputs:
-  - Gateway IDs
-  - Route Table IDs
+- Attaches an Internet Gateway (IGW) and sets up NAT Gateways using Elastic IPs.
+- Creates and associates route tables for public and private subnets.
+- **Outputs**: Gateway IDs, Route Table IDs.
 
 ---
 
 ### 🔹 Security Module
-- Creates distinct security groups:
-  - **Web Tier**: Allows HTTP/HTTPS from anywhere.
-  - **App Tier**: Allows traffic from the Web security group.
-  - **Database Tier**: Allows traffic from the App security group.
-- Outputs:
-  - Security Group IDs
+- Creates tier-specific Security Groups:
+  - **Web Tier**: Allows HTTP/HTTPS from any source.
+  - **App Tier**: Accepts traffic from Web Tier SG.
+  - **DB Tier**: Accepts traffic from App Tier SG.
+- **Outputs**: Security Group IDs.
 
 ---
 
 ### 🔹 Compute Module
-- Defines Launch Templates for Web and App EC2 instances.
-- Configures Auto Scaling Groups for both tiers in their respective subnets.
-- Creates Target Groups for integration with the ALB.
-- Outputs:
-  - Target Group ARNs
+- Defines Launch Templates for EC2 instances.
+- Sets up Auto Scaling Groups for Web and App tiers in their respective subnets.
+- Registers instances with corresponding Target Groups.
+- **Outputs**: Target Group ARNs.
 
 ---
 
 ### 🔹 ALB Module
 - Deploys:
-  - Public ALB for the Web Tier.
-  - Private ALB for the App Tier.
-- Sets up HTTP and HTTPS Listeners (requires SSL certificate for HTTPS).
-- Associates Target Groups with Listeners.
-- Outputs:
-  - ALB DNS Names
-  - Listener ARNs
+  - Public ALB (Web Tier)
+  - Private ALB (App Tier)
+- Configures HTTP/HTTPS listeners and links to Target Groups.
+- **Outputs**: ALB DNS Names, Listener ARNs.
 
 ---
 
 ### 🔹 RDS Module
-- Creates a subnet group for the RDS instance.
-- Provisions an RDS instance in private subnets.
-- Configures:
-  - Engine, version, storage, credentials.
-- Outputs:
-  - RDS Endpoint
-  - DB Username
+- Sets up an RDS Subnet Group and provisions a database instance in private subnets.
+- Configures DB engine, version, storage, and credentials.
+- **Outputs**: DB Endpoint, DB Username.
 
 ---
 
-## Configuration Files
+## Terraform Configuration Files
 
-### `main.tf`
-- Invokes all modules in the required order.
-- Passes outputs from one module to another.
-- Manages interdependencies like VPC and Subnets.
-
-### `variables.tf`
-- Declares input variables.
-- Includes default values for:
-  - Region
-  - CIDR blocks
-  - Instance types
-- Handles sensitive variables (e.g., DB credentials).
-
-### `outputs.tf`
-- Defines outputs such as ALB DNS and RDS endpoints.
-- Marks sensitive outputs as protected.
-
-### `terraform.tfvars`
-- Provides specific values for input variables.
-- Can include sensitive values (use caution in production).
-
-### `provider.tf`
-- Configures:
-  - AWS provider
-  - Terraform version constraints
-  - (Optional) Remote backend for state management
-
+- **`main.tf`**: Orchestrates all modules and passes interdependent values.
+- **`variables.tf`**: Defines input variables and defaults.
+- **`outputs.tf`**: Declares project-wide outputs like DNS and DB endpoints.
+- **`terraform.tfvars`**: Provides custom values for variables.
+- **`provider.tf`**: Configures AWS provider, version constraints, and optionally remote backends.
 
 ## Summary
 

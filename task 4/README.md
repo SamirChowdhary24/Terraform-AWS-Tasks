@@ -1,38 +1,45 @@
-#  TASK-4
-#  Multi-Region AWS Infrastructure with Terraform
+# TASK-4  
+# Multi-Region AWS Infrastructure with Terraform
 
-## This task requires us to create the following resources 
+## This task requires us to create the following resources:
 
 - **Region**: 1  
 - **Availability Zones**: 2  
-- **VPC**: 1  
-- **Subnets**:
-  - 1 Public Subnet per AZ (Web Tier)
-  - 1 Private Subnet per AZ (App Tier)
+
+- **VPC**:  
+  - 1 Virtual Private Cloud
+
+- **Subnets**:  
+  - 1 Public Subnet per AZ (Web Tier)  
+  - 1 Private Subnet per AZ (App Tier)  
   - 1 Private Subnet per AZ (DB Tier)
 
-- **Networking**:
-  - Internet Gateway with VPC Attachment
-  - NAT Gateway in each Public Subnet
-  - Route Tables per Subnet
-  - Routes for IGW (public) & NAT GW (private)
+- **Networking**:  
+  - Internet Gateway with VPC Attachment  
+  - NAT Gateway in each Public Subnet  
+  - Route Tables for each Subnet  
+  - Routes configured for:
+    - IGW in Public Subnets  
+    - NAT Gateway in Private Subnets  
 
-- **Compute**:
-  - Launch Templates
-  - Auto Scaling Groups for Frontend & Backend EC2 instances
+- **Compute**:  
+  - Launch Templates for EC2 configuration  
+  - Auto Scaling Groups:
+    - Frontend EC2 instances (Web Tier)  
+    - Backend EC2 instances (App Tier)
 
-- **Load Balancer**:
-  - Public ALB for Web Tier
-  - Private ALB for App Tier
-  - HTTP/HTTPS Listeners & Rules
-  - Target Groups for ASGs
+- **Load Balancer**:  
+  - Public Application Load Balancer for Web Tier  
+  - Private Application Load Balancer for App Tier  
+  - HTTP/HTTPS Listeners with Rules  
+  - Target Groups linked to respective Auto Scaling Groups
 
-- **EC2**:
-  - AMI, Instance Type, SSH Key Pair
-  - Network configuration based on tier
-
+- **EC2**:  
+  - Amazon Machine Image (AMI), Instance Type, and SSH Key Pair  
+  - Network configuration based on application tier (Web/App/DB)
 
 ---
+
 
 ##  Project Structure
 

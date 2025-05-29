@@ -1,44 +1,43 @@
 # TASK-4  
 # Multi-Region AWS Infrastructure with Terraform
 
-## This task requires us to create the following resources:
+##  Resources to be Created in This Task
 
-- **Region**: 1  
-- **Availability Zones**: 2  
+###  Infrastructure Overview
+- **Region**: Single AWS Region  
+- **Availability Zones**: Two AZs for high availability  
 
-- **VPC**:  
-  - 1 Virtual Private Cloud
+###  VPC & Subnet Layout
+- **VPC**: One custom Virtual Private Cloud
+- **Subnets**:
+  - **Web Tier**: Public Subnet in each AZ  
+  - **App Tier**: Private Subnet in each AZ  
+  - **DB Tier**: Private Subnet in each AZ  
 
-- **Subnets**:  
-  - 1 Public Subnet per AZ (Web Tier)  
-  - 1 Private Subnet per AZ (App Tier)  
-  - 1 Private Subnet per AZ (DB Tier)
+###  Networking Components
+- Internet Gateway (attached to the VPC)  
+- NAT Gateway in each Public Subnet  
+- Individual Route Tables per Subnet  
+- Routing Rules:
+  - Public Subnets → Internet Gateway  
+  - Private Subnets → NAT Gateway  
 
-- **Networking**:  
-  - Internet Gateway with VPC Attachment  
-  - NAT Gateway in each Public Subnet  
-  - Route Tables for each Subnet  
-  - Routes configured for:
-    - IGW in Public Subnets  
-    - NAT Gateway in Private Subnets  
+###  Compute Resources
+- **Launch Templates** to define EC2 instance settings  
+- **Auto Scaling Groups**:
+  - Web Tier (Frontend EC2 instances)  
+  - App Tier (Backend EC2 instances)  
 
-- **Compute**:  
-  - Launch Templates for EC2 configuration  
-  - Auto Scaling Groups:
-    - Frontend EC2 instances (Web Tier)  
-    - Backend EC2 instances (App Tier)
+###  Load Balancing Setup
+- Public ALB for the Web Tier  
+- Private ALB for the App Tier  
+- Configured with HTTP/HTTPS listeners & rules  
+- Target Groups for each Auto Scaling Group  
 
-- **Load Balancer**:  
-  - Public Application Load Balancer for Web Tier  
-  - Private Application Load Balancer for App Tier  
-  - HTTP/HTTPS Listeners with Rules  
-  - Target Groups linked to respective Auto Scaling Groups
+###  EC2 Instance Details
+- AMI, Instance Type, and SSH Key Pair  
+- Tier-based network configuration (Web, App, DB)
 
-- **EC2**:  
-  - Amazon Machine Image (AMI), Instance Type, and SSH Key Pair  
-  - Network configuration based on application tier (Web/App/DB)
-
----
 
 
 ##  Project Directory Layout

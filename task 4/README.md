@@ -59,17 +59,18 @@ The Structure looks like:
 ├── terraform.tfvars                 # Environment-specific input variables           
 ├── variables.tf                     # Variable declarations
 ```
-##  Key Benefits
+## Key Benefits
 
-###  Multi-AZ Deployment
-- Increases **high availability** and **resilience**
-- Reduces downtime due to **AZ failures**
-- Enables **automatic failover** for critical services (e.g., RDS)
+### 1. Multi-AZ Deployment
+- Enhances system **availability** and **fault tolerance**
+- Minimizes the impact of **Availability Zone outages**
+- Supports **automatic failover** for essential services such as RDS
 
-###  Modular Design
-- Encourages **code reuse**
-- Makes infrastructure **easier to maintain**
-- Simplifies updates to individual components (e.g., ALB, RDS)
+### 2. Modular Design
+- Promotes **reusability** across different environments and projects
+- Improves **infrastructure manageability** and clarity
+- Allows seamless **modification of individual components** like ALB or RDS without affecting the whole setup
+
 
 
 # Follow these steps to deploy the infrastructure:

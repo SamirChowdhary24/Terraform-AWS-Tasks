@@ -47,15 +47,16 @@ task-3/
     ├── provider.tf
     ├── terraform.tfvars
     └── variables.tf
-
+```
 
 # Module Structure
 Here is the structure used for each module (ec2, eip, nat, etc.) within the "module" directory:
 ```bash
-| |-------- ec2 (module name)
-| |-- main.tf
-| |-- output.tf
-| |-- variables.tf
+modules/
+└── module_name(ec2)/                     # EC2 instance module
+    ├── main.tf              # Resource definitions
+    ├── variables.tf         # Input variable declarations
+    └── output.tf            # Output values
 ```
 # File Structure
 

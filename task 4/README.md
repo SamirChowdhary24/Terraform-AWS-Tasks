@@ -1,5 +1,5 @@
 #  TASK-4
-#  Terraform AWS Multi-Region Infrastructure
+#  Multi-Region AWS Infrastructure with Terraform
 
 ## This task requires us to create the following resources 
 

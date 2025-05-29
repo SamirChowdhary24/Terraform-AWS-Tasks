@@ -33,11 +33,9 @@ Task2/
 ## Step 1: Setting Up the Child Modules
 ###  EC2 Module
 
-| File                 | Purpose                                                                 |
-|----------------------|-------------------------------------------------------------------------|
-| `main.tf`            | Launches an EC2 instance in the given subnet with specified config      |
-| `variables.tf`       | Declares variables like `ami`, `instance_type`, `subnet_id`, `name`     |
-| `outputs.tf`         | Outputs EC2 instance ID                                                 |
+- **`main.tf`** – Launches an EC2 instance with the given config.  
+- **`variables.tf`** – Declares variables like `ami`, `instance_type`, `subnet_id`, and `name`.  
+- **`outputs.tf`** – Outputs the EC2 instance ID.
 
 
 ###  VPC Module

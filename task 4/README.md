@@ -41,12 +41,12 @@
 ---
 
 
-##  Project Structure
+##  Project Directory Layout
 
 The Structure looks like:
 
 ```bash
-├── .task 4/                      # Terraform working directory (auto-generated)
+├── .task 4/                      
 ├── modules/                         # Reusable infrastructure modules
 │   ├── alb/
 │   ├── computing/
@@ -56,8 +56,7 @@ The Structure looks like:
 │   └── vpc/
 ├── main.tf                          # Root Terraform config
 ├── outputs.tf                       # Output variables
-├── provider.tf                      # Provider and backend settings
-├── README.md                        # Project documentation
+├── provider.tf                      # Provider and backend settings                     
 ├── terraform.tfvars                 # Environment-specific input variables           
 ├── variables.tf                     # Variable declarations
 ```

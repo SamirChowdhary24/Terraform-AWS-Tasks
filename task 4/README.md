@@ -15,42 +15,40 @@ This project aims to provision a secure, scalable, and highly available web appl
 This setup provides a robust foundation for running production-grade web applications with a strong emphasis on availability, security, and performance.
 
 
-##  Resources to be Created in This Task
+## Resources Overview
 
-###  Infrastructure Overview
-- **Region**: Single AWS Region  
-- **Availability Zones**: Two AZs for high availability  
+### Infrastructure
+- **Region**: 1 AWS Region  
+- **AZs**: 2 for high availability  
+- **VPC**: Custom VPC with isolated tiers  
 
-###  VPC & Subnet Layout
-- **VPC**: One custom Virtual Private Cloud
-- **Subnets**:
-  - **Web Tier**: Public Subnet in each AZ  
-  - **App Tier**: Private Subnet in each AZ  
-  - **DB Tier**: Private Subnet in each AZ  
+### Subnets
+- **Web Tier**: Public subnets (1 per AZ)  
+- **App Tier**: Private subnets (1 per AZ)  
+- **DB Tier**: Private subnets (1 per AZ)  
 
-###  Networking Components
-- Internet Gateway (attached to the VPC)  
-- NAT Gateway in each Public Subnet  
-- Individual Route Tables per Subnet  
-- Routing Rules:
-  - Public Subnets → Internet Gateway  
-  - Private Subnets → NAT Gateway  
+### Networking
+- Internet Gateway (IGW)  
+- NAT Gateway in each public subnet  
+- Route Tables with:
+  - IGW for public subnets  
+  - NAT for private subnets  
 
-###  Compute Resources
-- **Launch Templates** to define EC2 instance settings  
-- **Auto Scaling Groups**:
-  - Web Tier (Frontend EC2 instances)  
-  - App Tier (Backend EC2 instances)  
+### Compute & Scaling
+- Launch Templates for EC2  
+- Auto Scaling Groups for:
+  - Frontend (Web Tier)  
+  - Backend (App Tier)  
 
-###  Load Balancing Setup
-- Public ALB for the Web Tier  
-- Private ALB for the App Tier  
-- Configured with HTTP/HTTPS listeners & rules  
-- Target Groups for each Auto Scaling Group  
+### Load Balancer
+- Public ALB (Web Tier)  
+- Private ALB (App Tier)  
+- HTTP/HTTPS listeners + target groups  
 
-###  EC2 Instance Details
-- AMI, Instance Type, and SSH Key Pair  
-- Tier-based network configuration (Web, App, DB)
+### EC2 Configuration
+- AMI, instance types, SSH key  
+- Network placement by tier
+
 
 
 
@@ -194,3 +192,13 @@ terraform plan
 ```bash
 terraform apply auto-approve
 ```
+![WhatsApp Image 2025-05-29 at 17 24 44_58586ca4](https://github.com/user-attachments/assets/3d42df35-9f7d-4c1b-bf29-9fe22a9b09e2)
+
+![WhatsApp Image 2025-05-29 at 17 25 52_4f61dd8e](https://github.com/user-attachments/assets/a140d874-05aa-4d7d-b834-d2254d503ab9)
+
+![WhatsApp Image 2025-05-29 at 17 26 46_6bc584eb](https://github.com/user-attachments/assets/bcf0af7a-7996-4c92-8f2b-7a78f76434aa)
+
+![WhatsApp Image 2025-05-29 at 17 28 51_cf5e123a](https://github.com/user-attachments/assets/e442029c-05be-4b11-a328-a8d46c1939f4)
+
+
+

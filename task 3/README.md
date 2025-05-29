@@ -67,5 +67,19 @@ Defines concrete values for the variables declared in `variables.tf`. These valu
 
 
 
+# Follow these steps to deploy the infrastructure:
 
+### 1. Initialize Terraform
+```bash
+terraform init
+```
+### 2. Review the Execution Plan
+```bash
+terraform plan
+```
+### 3. Apply the Configuration
+```bash
+terraform apply auto-approve
+```
+## After running the above commands, you should get the following output, and the resources will be created accordingly.
 ![WhatsApp Image 2025-05-11 at 01 58 16_3fc00235](https://github.com/user-attachments/assets/05a7c2ab-47cf-4ac6-bf74-b90553fd0a81)
